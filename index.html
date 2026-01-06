@@ -12,66 +12,272 @@
             color: #333;
             line-height: 1.6;
             min-height: 100vh;
+            overflow-x: hidden;
         }
-        .container { max-width: 100%; width: 100%; padding: 12px; margin: 0 auto; }
+        .container {
+            max-width: 100%;
+            width: 100%;
+            padding: 12px;
+            margin: 0 auto;
+        }
         header {
             background: white;
-            padding: 20px 15px;
+            padding: 20px 12px;
             border-radius: 12px;
             margin-bottom: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            text-align: left;
+            text-align: center;
         }
-        h1 { font-size: 1.6em; margin-bottom: 12px; text-align: center; }
-        .intro { font-size: 0.9em; color: #555; margin-bottom: 15px; }
-        .sponsors-mention { 
-            font-size: 0.85em; 
-            color: #444; 
-            background: #f9f9f9; 
-            padding: 12px; 
-            border-left: 4px solid #007bff;
-            border-radius: 4px;
+        h1 { font-size: 1.8em; margin-bottom: 12px; }
+        .intro { font-size: 0.92em; color: #555; margin-bottom: 10px; }
+        .voting-section {
+            background: white;
+            padding: 20px 12px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-        
-        .voting-section { background: white; padding: 20px 8px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-        h2 { font-size: 1.4em; text-align: center; margin-bottom: 20px; }
-
-        /* 2-1-3 Layout */
-        .top-three-container { display: flex; justify-content: center; align-items: flex-end; gap: 8px; margin-bottom: 24px; padding: 0 4px; }
-        .top-card { flex: 1; background: white; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; border: 1px solid #e0e0e0; position: relative; }
-        .rank-pos-0 { order: 2; transform: scale(1.08); z-index: 2; border-color: #ffd700; padding: 20px 4px; }
-        .rank-pos-1 { order: 1; transform: scale(1); z-index: 1; }
-        .rank-pos-2 { order: 3; transform: scale(0.95); z-index: 1; }
-
-        .top-card-image-container { position: relative; display: inline-block; margin-bottom: 8px; cursor: pointer; }
-        .top-card-image { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd; }
-        .rank-pos-0 .top-card-image { border-color: #ffd700; width: 85px; height: 85px; }
-
-        .rank-badge { position: absolute; top: -5px; right: -5px; background: #007bff; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75em; }
-        .rank-pos-0 .rank-badge { background: #ffd700; color: #333; width: 32px; height: 32px; }
-
-        .top-card-name { font-size: 0.9em; font-weight: bold; margin-bottom: 4px; }
-        .top-card-votes { font-size: 1.1em; font-weight: bold; color: #dc3545; margin-bottom: 8px; }
-        .top-vote-btn { width: 90%; padding: 8px 0; background: #007bff; color: white; border: none; border-radius: 20px; font-weight: bold; }
-
-        .remaining-list { display: flex; flex-direction: column; gap: 10px; }
-        .analyst-row { background: #fafafa; border-radius: 10px; padding: 10px; display: flex; align-items: center; gap: 10px; border: 1px solid #eee; }
-        .analyst-image { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; cursor: pointer; }
+        h2 { font-size: 1.5em; text-align: center; margin-bottom: 16px; }
+        /* Top 3 水平三列，No.1 永遠在中間 */
+        .top-three-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .top-card {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 16px 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            max-width: 33.33%;
+        }
+        .top-card.first {
+            order: 2;
+            transform: scale(1.08);
+            z-index: 1;
+            padding-top: 24px;
+            padding-bottom: 24px;
+        }
+        .top-card.second { order: 1; transform: scale(1.04); }
+        .top-card.third { order: 3; transform: scale(1.02); }
+        .top-card-image-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .top-card-image {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ddd;
+        }
+        .rank-badge {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #007bff;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .top-card-name { font-size: 1.1em; font-weight: bold; margin-bottom: 6px; }
+        .top-card-votes { font-size: 1.4em; font-weight: bold; color: #dc3545; margin-bottom: 10px; }
+        .top-vote-btn {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .remaining-list { display: flex; flex-direction: column; gap: 12px; }
+        .analyst-row {
+            background: white;
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .rank-number {
+            background: #007bff;
+            color: white;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1em;
+        }
+        .analyst-image {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+        }
         .analyst-info { flex: 1; }
-        .vote-count { font-size: 1em; font-weight: bold; color: #dc3545; }
-        .vote-btn { padding: 6px 12px; background: #007bff; color: white; border: none; border-radius: 6px; }
+        .analyst-name { font-size: 1.1em; font-weight: bold; }
+        .vote-count { font-size: 1.2em; font-weight: bold; color: #dc3545; }
+        .vote-btn {
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9em;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-        /* Modal */
-        .profile-modal, .voted-page { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
-        .profile-modal.show, .voted-page.show { display: flex; }
-        .profile-content { background: white; border-radius: 16px; padding: 25px 20px; width: 90%; max-width: 400px; position: relative; }
-        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 28px; border: none; background: none; color: #999; cursor: pointer; }
-        .profile-image-large { width: 90px; height: 90px; border-radius: 50%; display: block; margin: 0 auto 15px; border: 3px solid #007bff; object-fit: cover; }
-        .bio-text { font-size: 0.9em; color: #444; line-height: 1.5; text-align: left; margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; max-height: 250px; overflow-y: auto; }
-        
-        .voted-content { background: white; border-radius: 16px; padding: 30px; width: 85%; text-align: center; }
-        .voted-checkmark { font-size: 60px; color: #28a745; margin-bottom: 10px; }
-        .back-btn { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 8px; margin-top: 20px; font-weight: bold; }
+        /* 贊助商區域 - logo + 名字 */
+        .sponsors-section {
+            background: white;
+            padding: 24px 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .sponsors-title {
+            text-align: center;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px 12px;
+            align-items: center;
+            justify-items: center;
+        }
+        .sponsor-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .sponsor-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+        .sponsor-item:hover .sponsor-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .sponsor-name {
+            font-size: 0.85em;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* 彈窗和成功頁 - 屏幕居中 */
+        .profile-modal, .voted-page {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        .profile-modal.show, .voted-page.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .profile-content, .voted-content {
+            background: white;
+            border-radius: 16px;
+            padding: 24px 16px;
+            width: 90%;
+            max-width: 460px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            color: #999;
+        }
+        .profile-image-large {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #007bff;
+            margin: 0 auto 16px;
+            display: block;
+        }
+        .profile-name { font-size: 1.8em; font-weight: bold; text-align: center; margin-bottom: 8px; }
+        .profile-title { font-size: 1.1em; color: #007bff; text-align: center; margin-bottom: 20px; }
+        .profile-bio { font-size: 0.95em; color: #555; line-height: 1.7; text-align: justify; }
+
+        .voted-checkmark {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 2.8em;
+            color: white;
+        }
+        .voted-title { font-size: 1.8em; color: #28a745; margin-bottom: 12px; font-weight: bold; text-align: center; }
+        .voted-analyst-name { font-size: 1.4em; margin-bottom: 16px; font-weight: bold; text-align: center; }
+        .voted-count-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .voted-count-label { font-size: 0.9em; opacity: 0.9; margin-bottom: 4px; }
+        .voted-count-number { font-size: 2.2em; font-weight: bold; }
+        .back-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.05em;
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -79,97 +285,245 @@
         <header>
             <h1>Vote for Listing</h1>
             <p class="intro"><strong>Introduction to the Global Investment Trading Competition</strong></p>
-            <p class="intro">The Global Investment Trading Competition brings together top analysts worldwide to showcase trading strategies. The top 3 will receive bonuses of $2M - $10M and manage a $200M fund.</p>
-            <p class="sponsors-mention"><strong>Special thanks to:</strong><br>
-            Robinhood, Ally Bank, Morgan Stanley, Goldman Sachs, Coinbase, Kraken, PVMEST</p>
+            <p class="intro">The Global Investment Trading Competition is a grand event that brings together well-known analysts from all over the world to showcase their expertise in investment and trading strategies.</p>
+            <p class="intro">We sincerely invite the supporters of each analyst to vote and jointly select the best analyst. Based on the analyst's performance and voting support ranking, the top three analysts will receive generous bonuses of US$2 million to US$10 million, as well as the opportunity to manage a US$200 million fund, allowing them to further demonstrate their investment strength on the global stage.</p>
+            <p class="intro">Join us and support your favorite analysts in this exciting competition, help them rank among the top three, win millions of dollars in cash prizes and hundreds of millions of dollars in fund management rights, let us witness the peak showdown in the investment field together, and celebrate their outstanding achievements in the investment and trading fields together!</p>
+            <p class="sponsors-mention"><strong>Special thanks to the sponsors of this Global Investment Trading Competition:</strong><br>Robinhood, Ally Bank, Morgan Stanley, Goldman Sachs, Coinbase, Kraken, PVMEST</p>
         </header>
-
         <div class="voting-section">
-            <h2>Current Ranking</h2>
+            <h2>Vote for Listing</h2>
             <div class="top-three-container" id="topThree"></div>
             <div class="remaining-list" id="analyststList"></div>
+        </div>
+        <div class="sponsors-section">
+            <h3 class="sponsors-title">The following are sponsors</h3>
+            <div class="sponsors-grid">
+                <div class="sponsor-item">
+                    <img src="https://i.ibb.co/PGdSgJ3q/Bybit.png" alt="Bybit" class="sponsor-logo">
+                    <span class="sponsor-name">Bybit</span>
+                </div>
+                <div class="sponsor-item">
+                    <img src="https://i.ibb.co/Rk1yY4nV/coinbase111.png"  alt="Coinbase" class="sponsor-logo">
+                    <span class="sponsor-name">Coinbase</span>
+                </div>
+                <div class="sponsor-item">
+                    <img src="https://i.ibb.co/Y47jqHT4/kraken.png" alt="Kraken" class="sponsor-logo">
+                    <span class="sponsor-name">Kraken</span>
+                </div>
+                <div class="sponsor-item">
+                    <img src="https://i.ibb.co/6cxJc2Y8/okx.png" alt="OKX" class="sponsor-logo">
+                    <span class="sponsor-name">OKX</span>
+                </div>
+                <div class="sponsor-item">
+                    <img src="https://i.ibb.co/MyhpDtZ0/cash-app.png" alt="Cash App" class="sponsor-logo">
+                    <span class="sponsor-name">Cash App</span>
+                </div>
+                <div class="sponsor-item">
+                    <img src="https://i.ibb.co/7x2GBvHZ/crypto.png" alt="Crypto.com" class="sponsor-logo">
+                    <span class="sponsor-name">Crypto.com</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="profile-modal" id="profileModal">
         <div class="profile-content">
             <button class="close-btn" onclick="closeProfile()">×</button>
-            <img id="profileImageLarge" src="" class="profile-image-large">
-            <h3 id="profileName" style="text-align:center"></h3>
-            <p id="profileTitle" style="text-align:center; color:#007bff; font-weight:bold; font-size:0.9em; margin-top:5px;"></p>
-            <div id="profileBioContent" class="bio-text"></div>
+            <img id="profileImageLarge" src="" alt="" class="profile-image-large">
+            <div class="profile-name" id="profileName"></div>
+            <div class="profile-title" id="profileTitle"></div>
+            <div id="profileBioContent"></div>
         </div>
     </div>
 
     <div class="voted-page" id="votedPage">
         <div class="voted-content">
             <div class="voted-checkmark">✓</div>
-            <h3>Vote Successful!</h3>
-            <p id="votedAnalystName" style="font-weight:bold; margin:15px 0; font-size:1.2em;"></p>
-            <div style="background:#f0f7ff; padding:15px; border-radius:10px;">
-                <p style="font-size:0.8em; color:#666">Total Votes Received</p>
-                <p id="votedCountNumber" style="font-size:2em; font-weight:bold; color:#007bff"></p>
+            <div class="voted-title">Vote Successful!</div>
+            <div class="voted-analyst-name" id="votedAnalystName"></div>
+            <div class="voted-count-box">
+                <div class="voted-count-label">Current Total Votes</div>
+                <div class="voted-count-number" id="votedCountNumber"></div>
             </div>
-            <button class="back-btn" onclick="goBack()">Continue Voting</button>
+            <button class="back-btn" onclick="goBack()">Back to Voting</button>
         </div>
     </div>
 
     <script>
         const analysts = [
-            { name: "Dan Lagan", votes: 1196007, image: "https://i.ibb.co/Xxssmfkt/image.jpg", title: "CEO & CIO", bio: "Dan Lagan, CFA, is the Chief Executive Officer and Chief Investment Officer at Congress Asset Management. He chairs the Investment Committee and has over 30 years of experience in managing large-cap growth and value portfolios." },
-            { name: "Marcus Vance", votes: 1752347, image: "https://i.ibb.co/JR39RJmT/photo-2026-01-02-22-10-19.jpg", title: "Economist & Investor", bio: "Marcus Vance is a leading global economist known for his predictive models on emerging markets. He has successfully managed private equity portfolios for over two decades, focusing on sustainable growth and technological innovation." },
-            { name: "David Kostin", votes: 1141431, image: "https://i.ibb.co/3yScCd6n/20250717023201.png", title: "Chief U.S. Equity Strategist", bio: "David Kostin is a partner at Goldman Sachs and the Chief U.S. Equity Strategist. He is responsible for the firm's U.S. stock market forecasts and is frequently cited in major financial media for his market insights." },
-            { name: "Joseph Gabelli", votes: 1122402, image: "https://i.ibb.co/1J9Pv6T4/20250717023419.png", title: "Portfolio Manager", bio: "Joseph Gabelli is a senior portfolio manager focusing on value investing and long-term equity growth. He has a track record of identifying undervalued companies before they become market leaders." },
-            { name: "Peter Mintzberg", votes: 1084986, image: "https://i.ibb.co/dssTwDqN/20250717023615.png", title: "CEO, Grayscale", bio: "Peter Mintzberg is the CEO of Grayscale Investments, the world's largest digital currency asset manager. He leads the firm's strategy in bridging traditional finance with the crypto ecosystem." },
-            { name: "John Hoffman", votes: 1047668, image: "https://i.ibb.co/M55y5kMW/20250717030534.png", title: "Head of Distribution, Grayscale", bio: "John Hoffman is a pioneer in the ETF industry. At Grayscale, he oversees the global distribution of digital asset investment products to institutional and retail investors." },
-            { name: "Glenn Hutchins", votes: 984267, image: "https://i.ibb.co/20KVXZYw/20250717024940.png", title: "Chairman, North Island", bio: "Glenn Hutchins is a co-founder of Silver Lake, a global leader in technology investing. He is a respected advisor on global economic policy and digital asset regulation." },
-            { name: "Corey Bowen", votes: 948071, image: "https://i.ibb.co/WW9bN636/20250717025316.png", title: "Chief Financial Advisor", bio: "Corey Bowen specializes in strategic wealth management and corporate finance. He provides high-level consulting for some of the world's largest family offices." },
-            { name: "Gokul Laroia", votes: 936611, image: "https://i.ibb.co/JwMX29Yy/20250717025943.png", title: "CEO Asia, Morgan Stanley", bio: "Gokul Laroia is the CEO of Morgan Stanley for the Asia Pacific region. He has extensive experience in capital markets and investment banking across global territories." },
-            { name: "Mike Wilson", votes: 918200, image: "https://i.ibb.co/KphbfCbD/20250717025647.png", title: "Chief Equity Strategist", bio: "Mike Wilson is the Chief Investment Officer and Chief Equity Strategist for Morgan Stanley. He is well-known for his 'tactical' approach to market cycles." }
+            {
+                name: "Dan Lagan",
+                votes: 1196007,
+                image: "https://i.ibb.co/Xxssmfkt/image.jpg",
+                title: "Chief Executive Officer & Chief Investment Officer",
+                bio: "Mr. Lagan joined Congress Asset Management in 1989. He has served as the firm's Chief Investment Officer since 2005 and Chief Executive Officer since 2013. He serves as Chairman of the Investment Oversight Committee and Co-Chairman of the Large Cap Growth and Mid Cap Growth Investment Committees.\n\nDan Lagan firmly believes that wealth is not only a sign of personal success, but also a catalyst for social progress. He advocates responsible investment, paying attention to environmental, social and governance (ESG) standards to promote sustainable economic growth.\n\nIn addition to his outstanding achievements in the financial field, Dan Lagan is also a philanthropist. He founded the Dan Lagan Foundation in 2015, focusing on supporting education, entrepreneurship and poverty relief.",
+                years: "35+"
+            },
+            {
+                name: "Marcus Vance",
+                votes: 1752347,
+                image: "https://i.ibb.co/JR39RJmT/photo-2026-01-02-22-10-19.jpg",
+                title: "Economist, Investor and Academic",
+                bio: "Marcus Vance is a renowned economist and investor known for his outstanding achievements in the stock and cryptocurrency markets. With a PhD in Economics from Cambridge University, Professor Vance has spent more than two decades in academia.\n\nAs an investor, Professor Vance is widely recognized for his strategic acumen in both stock and cryptocurrency portfolios. His cryptocurrency portfolio has returned more than 300 times since 2017.\n\nClassic investment cases:\n• 2013: Apple - 40x profit\n• 2018: Bitcoin - 10x profit\n• 2020: Tesla - 15x profit\n• 2023: Nvidia - 10x profit\n• 2025: Coinbase - 1.5x profit",
+                years: "25+"
+            },
+            {
+                name: "David Kostin",
+                votes: 1141431,
+                image: "https://i.ibb.co/3yScCd6n/20250717023201.png",
+                title: "Chief U.S. Equity Strategist, Goldman Sachs",
+                bio: "David Kostin graduated from Brown University with a Bachelor of Science in Applied Mathematics. He joined Goldman Sachs in January 2011 and is currently a partner and chief U.S. equity strategist.\n\nHe has 30+ years of experience in the financial investment field. He was previously vice president of Salomon Brothers, vice president of U.S. equity research, and managing director of U.S. equity research and U.S. portfolio strategy.",
+                years: "30+"
+            },
+            {
+                name: "Joseph Gabelli",
+                votes: 1122402,
+                image: "https://i.ibb.co/1J9Pv6T4/20250717023419.png",
+                title: "Portfolio Manager & Cryptocurrency Analyst",
+                bio: "Joseph Gabelli has served as a portfolio manager since 2018. He holds a BA from Boston College and an MBA from Columbia Business School, graduating with Dean's Honors and Magna Cum Laude.\n\nHe worked as a fund manager at Citadel Investment Group and as a cryptocurrency analyst at Fidelity Investments. As the nephew of Professor Mario Gabelli, he has inherited sound investment philosophy.\n\nJoseph is particularly good at short-term trading strategies and has strong analytical skills in the cryptocurrency market.",
+                years: "15+"
+            },
+            {
+                name: "Peter Mintzberg",
+                votes: 1084986,
+                image: "https://i.ibb.co/dssTwDqN/20250717023615.png",
+                title: "CEO, Grayscale Investments",
+                bio: "Peter Mintzberg is the CEO of Grayscale Investments. Prior to joining Grayscale, he served as the global head of strategy for asset and wealth management at Goldman Sachs.\n\nHe has held global leadership positions in strategy, M&A, and investor relations at companies including OppenheimerFunds, Invesco, BlackRock, and Apollo.\n\nMintzberg has more than two decades of experience in developing and executing strategy and driving growth through innovation. He holds a bachelor's degree in engineering and an MBA from Harvard University.",
+                years: "20+"
+            },
+            {
+                name: "John Hoffman",
+                votes: 1047668,
+                image: "https://i.ibb.co/M55y5kMW/20250717030534.png",
+                title: "Head of Distribution and Partnerships, Grayscale",
+                bio: "John Hoffman is the Head of Distribution and Partnerships at Grayscale. He joined Invesco in 2006 as Head of Americas, ETF and Index Strategy.\n\nAccomplished financial executive and ETF pioneer. He has led the core ETF function and driven revenue growth on a platform with over $400 billion in assets and over 225 ETF listings.\n\nRecognized as a thought leader on the digitization of distribution, ETF products, and capital markets. He pioneered the Smart Beta ETF revolution and promoted many first-time ETF concepts.",
+                years: "18+"
+            },
+            {
+                name: "Glenn Hutchins",
+                votes: 984267,
+                image: "https://i.ibb.co/20KVXZYw/20250717024940.png",
+                title: "Chairman, North Island",
+                bio: "After graduating from Harvard College in 1977 and Harvard Business School and Law School in 1983, Glenn Hutchins began his career in private equity.\n\nIn 1999, he co-founded Silver Lake Partners. He served as a director and chairman of the Audit and Risk Committee of the Federal Reserve Bank of New York from 2011 to 2020.\n\nHutchins is the chairman of North Island, which he co-founded in 2020. He is co-chair of the Brookings Institution board and a member of the Council on Foreign Relations. He also serves on the boards of AT&T and Santander.",
+                years: "40+"
+            },
+            {
+                name: "Corey Bowen",
+                votes: 948071,
+                image: "https://i.ibb.co/WW9bN636/20250717025316.png",
+                title: "Chief Financial Advisor, Former McKinsey",
+                bio: "Corey Bowen served as Chief Financial Advisor of McKinsey, providing strategic consulting and business insights to many companies.\n\nHe provides comprehensive financial planning services and develops effective investment strategies. He is passionate about writing books and articles on economics, finance and blockchain technology.\n\nHis book 'Blockchain: How Bitcoin and Blockchain are Changing the Economic World' is a best-seller worldwide. His investments in blockchain companies like OKCoin and Tezos achieved profits exceeding 100 times by 2018.",
+                years: "20+"
+            },
+            {
+                name: "Gokul Laroia",
+                votes: 936611,
+                image: "https://i.ibb.co/JwMX29Yy/20250717025943.png",
+                title: "CEO Asia & Global Co-Head of Equities, Morgan Stanley",
+                bio: "Gokul Laroia is CEO of Asia for Morgan Stanley, Co-Head of Global Equities and a member of the firm's Management Committee.\n\nOver a career spanning more than 25 years, Laroia has held leadership positions heading up M&A, Capital Markets and Investment Banking divisions. He holds a bachelor's degree in economics and an MBA from the University of Delhi.\n\nHe has spent more than 25 years in Asia, living through multiple economic cycles. His experiences in the region have been critical to his career success and ability to meet client needs.",
+                years: "25+"
+            },
+            {
+                name: "Mike Wilson",
+                votes: 918200,
+                image: "https://i.ibb.co/KphbfCbD/20250717025647.png",
+                title: "Chief U.S. Equity Strategist & CIO, Morgan Stanley",
+                bio: "Mike Wilson is Morgan Stanley's Chief U.S. Equity Strategist and Chief Investment Officer for Institutional Securities and Wealth Management.\n\nAs CIO and Chairman of the Global Investment Committee, he leverages best-in-class research to provide unique market insights. He joined Morgan Stanley in 1989 as an investment banker.\n\nWilson holds a BBA from the University of Michigan and an MBA from the Kellogg Graduate School of Management at Northwestern University. He is proud of mentoring young professionals and has tried many different roles at Morgan Stanley over his 35+ year career.",
+                years: "35+"
+            }
         ];
 
-        let votesData = {};
-        analysts.forEach(a => votesData[a.name] = a.votes);
+        const votesData = {};
+        analysts.forEach(analyst => {
+            votesData[analyst.name] = analyst.votes;
+        });
 
-        function formatNumber(num) { return num.toLocaleString(); }
-
-        function renderAll() {
-            const sorted = [...analysts].sort((a, b) => votesData[b.name] - votesData[a.name]);
-            
-            const topThreeContainer = document.getElementById('topThree');
-            topThreeContainer.innerHTML = sorted.slice(0, 3).map((a, i) => `
-                <div class="top-card rank-pos-${i}">
-                    <div class="top-card-image-container" onclick="showProfile('${a.name}')">
-                        <img src="${a.image}" class="top-card-image">
-                        <div class="rank-badge">No.${i+1}</div>
-                    </div>
-                    <div class="top-card-name">${a.name}</div>
-                    <div class="top-card-votes">${formatNumber(votesData[a.name])}</div>
-                    <button class="top-vote-btn" onclick="vote('${a.name}')">Vote</button>
-                </div>
-            `).join('');
-
-            const listContainer = document.getElementById('analyststList');
-            listContainer.innerHTML = sorted.slice(3).map((a, i) => `
-                <div class="analyst-row">
-                    <div class="rank-number">No.${i+4}</div>
-                    <img src="${a.image}" class="analyst-image" onclick="showProfile('${a.name}')">
-                    <div class="analyst-info" onclick="showProfile('${a.name}')">
-                        <div class="analyst-name">${a.name}</div>
-                        <div class="vote-count">${formatNumber(votesData[a.name])}</div>
-                    </div>
-                    <button class="vote-btn" onclick="vote('${a.name}')">Vote</button>
-                </div>
-            `).join('');
+        function formatNumber(num) {
+            return num.toLocaleString();
         }
 
-        function vote(name) {
-            votesData[name]++;
-            document.getElementById('votedAnalystName').textContent = name;
-            document.getElementById('votedCountNumber').textContent = formatNumber(votesData[name]);
+        function showProfile(analystName) {
+            const analyst = analysts.find(a => a.name === analystName);
+            if (!analyst) return;
+
+            document.getElementById('profileImageLarge').src = analyst.image;
+            document.getElementById('profileName').textContent = analyst.name;
+            document.getElementById('profileTitle').textContent = analyst.title;
+
+            const bioContent = document.getElementById('profileBioContent');
+            const bioParagraphs = analyst.bio.split('\n\n');
+            bioContent.innerHTML = bioParagraphs.map(p => `<p class="profile-bio">${p.replace(/\n/g, '<br>')}</p>`).join('');
+
+            document.getElementById('profileModal').classList.add('show');
+        }
+
+        function closeProfile() {
+            document.getElementById('profileModal').classList.remove('show');
+        }
+
+        function renderTopThree() {
+            const topThree = document.getElementById('topThree');
+            // 每次渲染都按當前票數重新排序
+            const sortedTop3 = analysts
+                .filter(a => votesData[a.name] !== undefined) // 確保有票數
+                .sort((a, b) => votesData[b.name] - votesData[a.name]) // 降序：最高票數在前
+                .slice(0, 3); // 只取前3名
+
+            topThree.innerHTML = sortedTop3.map((analyst, index) => {
+                const position = index + 1; // 1,2,3
+                const rankClass = position === 1 ? 'first' : position === 2 ? 'second' : 'third';
+                return `
+                    <div class="top-card ${rankClass}">
+                        <div class="top-card-image-container" onclick="showProfile('${analyst.name}')">
+                            <img src="${analyst.image}" alt="${analyst.name}" class="top-card-image">
+                            <div class="rank-badge">No.${position}</div>
+                        </div>
+                        <div class="top-card-name">${analyst.name}</div>
+                        <div class="top-card-votes">${formatNumber(votesData[analyst.name])}</div>
+                        <button class="top-vote-btn" onclick="vote('${analyst.name}')">👍 Vote</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderRemaining() {
+            const list = document.getElementById('analyststList');
+            // 剩餘排名也按當前票數排序
+            const sortedRemaining = analysts
+                .filter(a => votesData[a.name] !== undefined)
+                .sort((a, b) => votesData[b.name] - votesData[a.name])
+                .slice(3); // 從第4名開始
+
+            list.innerHTML = sortedRemaining.map((analyst, index) => {
+                const position = index + 4; // 4,5,6...
+                return `
+                    <div class="analyst-row">
+                        <div class="rank-number">No.${position}</div>
+                        <div class="analyst-image-container" onclick="showProfile('${analyst.name}')">
+                            <img src="${analyst.image}" alt="${analyst.name}" class="analyst-image">
+                        </div>
+                        <div class="analyst-info">
+                            <div class="analyst-name">${analyst.name}</div>
+                            <div class="vote-count">${formatNumber(votesData[analyst.name])}</div>
+                        </div>
+                        <button class="vote-btn" onclick="vote('${analyst.name}')">👍 Vote</button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function vote(analystName) {
+            votesData[analystName] += 1;
+
+            document.getElementById('votedAnalystName').textContent = analystName;
+            document.getElementById('votedCountNumber').textContent = formatNumber(votesData[analystName]);
+
             document.getElementById('mainPage').style.display = 'none';
             document.getElementById('votedPage').classList.add('show');
-            renderAll();
+
+            // 投票後立即重新渲染 Top 3 和剩餘列表
+            renderTopThree();
+            renderRemaining();
         }
 
         function goBack() {
@@ -177,18 +531,12 @@
             document.getElementById('mainPage').style.display = 'block';
         }
 
-        function showProfile(name) {
-            const a = analysts.find(item => item.name === name);
-            document.getElementById('profileImageLarge').src = a.image;
-            document.getElementById('profileName').textContent = a.name;
-            document.getElementById('profileTitle').textContent = a.title;
-            document.getElementById('profileBioContent').innerText = a.bio; // 使用 innerText 确保文字显示
-            document.getElementById('profileModal').classList.add('show');
-        }
+        document.getElementById('profileModal').addEventListener('click', function(e) {
+            if (e.target === this) closeProfile();
+        });
 
-        function closeProfile() { document.getElementById('profileModal').classList.remove('show'); }
-
-        renderAll();
+        renderTopThree();
+        renderRemaining();
     </script>
 </body>
 </html>
