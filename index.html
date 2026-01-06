@@ -12,21 +12,15 @@
             color: #333;
             line-height: 1.6;
             min-height: 100vh;
-            overflow-x: hidden;
         }
-        .container {
-            max-width: 100%;
-            width: 100%;
-            padding: 12px;
-            margin: 0 auto;
-        }
+        .container { max-width: 100%; width: 100%; padding: 12px; margin: 0 auto; }
         header {
             background: white;
             padding: 20px 15px;
             border-radius: 12px;
             margin-bottom: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            text-align: left; /* 改为左对齐方便阅读长文本 */
+            text-align: left;
         }
         h1 { font-size: 1.6em; margin-bottom: 12px; text-align: center; }
         .intro { font-size: 0.9em; color: #555; margin-bottom: 15px; }
@@ -39,138 +33,45 @@
             border-radius: 4px;
         }
         
-        .voting-section {
-            background: white;
-            padding: 20px 8px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
+        .voting-section { background: white; padding: 20px 8px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
         h2 { font-size: 1.4em; text-align: center; margin-bottom: 20px; }
 
-        .top-three-container {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 8px;
-            margin-bottom: 24px;
-            padding: 0 4px;
-        }
-        .top-card {
-            flex: 1;
-            background: white;
-            border-radius: 12px;
-            padding: 12px 4px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            text-align: center;
-            border: 1px solid #e0e0e0;
-            position: relative;
-        }
-        
+        /* 2-1-3 Layout */
+        .top-three-container { display: flex; justify-content: center; align-items: flex-end; gap: 8px; margin-bottom: 24px; padding: 0 4px; }
+        .top-card { flex: 1; background: white; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; border: 1px solid #e0e0e0; position: relative; }
         .rank-pos-0 { order: 2; transform: scale(1.08); z-index: 2; border-color: #ffd700; padding: 20px 4px; }
         .rank-pos-1 { order: 1; transform: scale(1); z-index: 1; }
         .rank-pos-2 { order: 3; transform: scale(0.95); z-index: 1; }
 
-        .top-card-image-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 8px;
-        }
-        .top-card-image {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #ddd;
-        }
+        .top-card-image-container { position: relative; display: inline-block; margin-bottom: 8px; cursor: pointer; }
+        .top-card-image { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd; }
         .rank-pos-0 .top-card-image { border-color: #ffd700; width: 85px; height: 85px; }
 
-        .rank-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #007bff;
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.75em;
-        }
+        .rank-badge { position: absolute; top: -5px; right: -5px; background: #007bff; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.75em; }
         .rank-pos-0 .rank-badge { background: #ffd700; color: #333; width: 32px; height: 32px; }
 
-        .top-card-name { font-size: 0.9em; font-weight: bold; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .top-card-name { font-size: 0.9em; font-weight: bold; margin-bottom: 4px; }
         .top-card-votes { font-size: 1.1em; font-weight: bold; color: #dc3545; margin-bottom: 8px; }
-        .top-vote-btn {
-            width: 90%;
-            padding: 8px 0;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            font-size: 0.85em;
-            font-weight: bold;
-        }
+        .top-vote-btn { width: 90%; padding: 8px 0; background: #007bff; color: white; border: none; border-radius: 20px; font-weight: bold; }
 
         .remaining-list { display: flex; flex-direction: column; gap: 10px; }
-        .analyst-row {
-            background: #fafafa;
-            border-radius: 10px;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid #eee;
-        }
-        .rank-number { color: #888; min-width: 35px; font-weight: bold; font-size: 0.9em; }
-        .analyst-image { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+        .analyst-row { background: #fafafa; border-radius: 10px; padding: 10px; display: flex; align-items: center; gap: 10px; border: 1px solid #eee; }
+        .analyst-image { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; cursor: pointer; }
         .analyst-info { flex: 1; }
-        .analyst-name { font-size: 1em; font-weight: bold; }
         .vote-count { font-size: 1em; font-weight: bold; color: #dc3545; }
-        .vote-btn {
-            padding: 6px 12px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.85em;
-        }
+        .vote-btn { padding: 6px 12px; background: #007bff; color: white; border: none; border-radius: 6px; }
 
-        .sponsors-section { background: white; padding: 20px 10px; border-radius: 12px; margin-bottom: 20px; }
-        .sponsors-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-        .sponsor-item { text-align: center; }
-        .sponsor-logo { width: 60px; height: 60px; object-fit: contain; margin-bottom: 5px; }
-        .sponsor-name { font-size: 0.75em; display: block; color: #666; }
-
-        .profile-modal, .voted-page {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
+        /* Modal */
+        .profile-modal, .voted-page { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
         .profile-modal.show, .voted-page.show { display: flex; }
-        .profile-content, .voted-content {
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            width: 85%;
-            max-width: 400px;
-            position: relative;
-        }
-        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 24px; border: none; background: none; color: #ccc; }
-        .profile-image-large { width: 100px; height: 100px; border-radius: 50%; display: block; margin: 0 auto 15px; border: 3px solid #007bff; }
-        .voted-checkmark { font-size: 50px; color: #28a745; text-align: center; margin-bottom: 10px; }
-        .back-btn { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 8px; margin-top: 15px; }
+        .profile-content { background: white; border-radius: 16px; padding: 25px 20px; width: 90%; max-width: 400px; position: relative; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 28px; border: none; background: none; color: #999; cursor: pointer; }
+        .profile-image-large { width: 90px; height: 90px; border-radius: 50%; display: block; margin: 0 auto 15px; border: 3px solid #007bff; object-fit: cover; }
+        .bio-text { font-size: 0.9em; color: #444; line-height: 1.5; text-align: left; margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; max-height: 250px; overflow-y: auto; }
+        
+        .voted-content { background: white; border-radius: 16px; padding: 30px; width: 85%; text-align: center; }
+        .voted-checkmark { font-size: 60px; color: #28a745; margin-bottom: 10px; }
+        .back-btn { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 8px; margin-top: 20px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -178,10 +79,8 @@
         <header>
             <h1>Vote for Listing</h1>
             <p class="intro"><strong>Introduction to the Global Investment Trading Competition</strong></p>
-            <p class="intro">The Global Investment Trading Competition is a grand event that brings together well-known analysts from all over the world to showcase their expertise in investment and trading strategies.</p>
-            <p class="intro">We sincerely invite the supporters of each analyst to vote and jointly select the best analyst. Based on the analyst's performance and voting support ranking, the top three analysts will receive generous bonuses of US$2 million to US$10 million, as well as the opportunity to manage a US$200 million fund, allowing them to further demonstrate their investment strength on the global stage.</p>
-            <p class="intro">Join us and support your favorite analysts in this exciting competition, help them rank among the top three, win millions of dollars in cash prizes and hundreds of millions of dollars in fund management rights, let us witness the peak showdown in the investment field together, and celebrate their outstanding achievements in the investment and trading fields together!</p>
-            <p class="sponsors-mention"><strong>Special thanks to the sponsors of this Global Investment Trading Competition:</strong><br>
+            <p class="intro">The Global Investment Trading Competition brings together top analysts worldwide to showcase trading strategies. The top 3 will receive bonuses of $2M - $10M and manage a $200M fund.</p>
+            <p class="sponsors-mention"><strong>Special thanks to:</strong><br>
             Robinhood, Ally Bank, Morgan Stanley, Goldman Sachs, Coinbase, Kraken, PVMEST</p>
         </header>
 
@@ -190,18 +89,6 @@
             <div class="top-three-container" id="topThree"></div>
             <div class="remaining-list" id="analyststList"></div>
         </div>
-
-        <div class="sponsors-section">
-            <h3 style="text-align:center; margin-bottom:15px;">Official Sponsors</h3>
-            <div class="sponsors-grid">
-                <div class="sponsor-item"><img src="https://i.ibb.co/PGdSgJ3q/Bybit.png" class="sponsor-logo"><span class="sponsor-name">Bybit</span></div>
-                <div class="sponsor-item"><img src="https://i.ibb.co/Rk1yY4nV/coinbase111.png" class="sponsor-logo"><span class="sponsor-name">Coinbase</span></div>
-                <div class="sponsor-item"><img src="https://i.ibb.co/Kpv6MLRs/kraken.png" class="sponsor-logo"><span class="sponsor-name">Kraken</span></div>
-                <div class="sponsor-item"><img src="https://i.ibb.co/6cxJc2Y8/okx.png" class="sponsor-logo"><span class="sponsor-name">OKX</span></div>
-                <div class="sponsor-item"><img src="https://i.ibb.co/MyhpDtZ0/cash-app.png" class="sponsor-logo"><span class="sponsor-name">Cash App</span></div>
-                <div class="sponsor-item"><img src="https://i.ibb.co/7x2GBvHZ/crypto.png" class="sponsor-logo"><span class="sponsor-name">Crypto.com</span></div>
-            </div>
-        </div>
     </div>
 
     <div class="profile-modal" id="profileModal">
@@ -209,19 +96,19 @@
             <button class="close-btn" onclick="closeProfile()">×</button>
             <img id="profileImageLarge" src="" class="profile-image-large">
             <h3 id="profileName" style="text-align:center"></h3>
-            <p id="profileTitle" style="text-align:center; color:#007bff; font-size:0.9em; margin-bottom:15px;"></p>
-            <div id="profileBioContent" style="font-size:0.85em; color:#666; max-height:200px; overflow-y:auto;"></div>
+            <p id="profileTitle" style="text-align:center; color:#007bff; font-weight:bold; font-size:0.9em; margin-top:5px;"></p>
+            <div id="profileBioContent" class="bio-text"></div>
         </div>
     </div>
 
     <div class="voted-page" id="votedPage">
-        <div class="voted-content" style="text-align:center">
+        <div class="voted-content">
             <div class="voted-checkmark">✓</div>
             <h3>Vote Successful!</h3>
-            <p id="votedAnalystName" style="font-weight:bold; margin:10px 0;"></p>
+            <p id="votedAnalystName" style="font-weight:bold; margin:15px 0; font-size:1.2em;"></p>
             <div style="background:#f0f7ff; padding:15px; border-radius:10px;">
-                <p style="font-size:0.8em; color:#666">Total Votes</p>
-                <p id="votedCountNumber" style="font-size:1.8em; font-weight:bold; color:#007bff"></p>
+                <p style="font-size:0.8em; color:#666">Total Votes Received</p>
+                <p id="votedCountNumber" style="font-size:2em; font-weight:bold; color:#007bff"></p>
             </div>
             <button class="back-btn" onclick="goBack()">Continue Voting</button>
         </div>
@@ -229,16 +116,16 @@
 
     <script>
         const analysts = [
-            { name: "Dan Lagan", votes: 1196007, image: "https://i.ibb.co/Xxssmfkt/image.jpg", title: "CEO & CIO", bio: "Mr. Lagan joined Congress Asset Management in 1989..." },
-            { name: "Marcus Vance", votes: 1752347, image: "https://i.ibb.co/JR39RJmT/photo-2026-01-02-22-10-19.jpg", title: "Economist & Investor", bio: "Marcus Vance is a renowned economist and investor..." },
-            { name: "David Kostin", votes: 1141431, image: "https://i.ibb.co/3yScCd6n/20250717023201.png", title: "Chief U.S. Equity Strategist", bio: "David Kostin is a partner at Goldman Sachs..." },
-            { name: "Joseph Gabelli", votes: 1122402, image: "https://i.ibb.co/1J9Pv6T4/20250717023419.png", title: "Portfolio Manager", bio: "Joseph Gabelli has served as a portfolio manager since 2018..." },
-            { name: "Peter Mintzberg", votes: 1084986, image: "https://i.ibb.co/dssTwDqN/20250717023615.png", title: "CEO, Grayscale", bio: "Peter Mintzberg is the CEO of Grayscale Investments..." },
-            { name: "John Hoffman", votes: 1047668, image: "https://i.ibb.co/M55y5kMW/20250717030534.png", title: "Head of Distribution, Grayscale", bio: "John Hoffman is a financial executive and ETF pioneer..." },
-            { name: "Glenn Hutchins", votes: 984267, image: "https://i.ibb.co/20KVXZYw/20250717024940.png", title: "Chairman, North Island", bio: "Glenn Hutchins co-founded Silver Lake Partners..." },
-            { name: "Corey Bowen", votes: 948071, image: "https://i.ibb.co/WW9bN636/20250717025316.png", title: "Chief Financial Advisor", bio: "Corey Bowen provides strategic consulting insights..." },
-            { name: "Gokul Laroia", votes: 936611, image: "https://i.ibb.co/JwMX29Yy/20250717025943.png", title: "CEO Asia, Morgan Stanley", bio: "Gokul Laroia is a member of the firm's Management Committee..." },
-            { name: "Mike Wilson", votes: 918200, image: "https://i.ibb.co/KphbfCbD/20250717025647.png", title: "Chief Equity Strategist", bio: "Mike Wilson leverages best-in-class research..." }
+            { name: "Dan Lagan", votes: 1196007, image: "https://i.ibb.co/Xxssmfkt/image.jpg", title: "CEO & CIO", bio: "Dan Lagan, CFA, is the Chief Executive Officer and Chief Investment Officer at Congress Asset Management. He chairs the Investment Committee and has over 30 years of experience in managing large-cap growth and value portfolios." },
+            { name: "Marcus Vance", votes: 1752347, image: "https://i.ibb.co/JR39RJmT/photo-2026-01-02-22-10-19.jpg", title: "Economist & Investor", bio: "Marcus Vance is a leading global economist known for his predictive models on emerging markets. He has successfully managed private equity portfolios for over two decades, focusing on sustainable growth and technological innovation." },
+            { name: "David Kostin", votes: 1141431, image: "https://i.ibb.co/3yScCd6n/20250717023201.png", title: "Chief U.S. Equity Strategist", bio: "David Kostin is a partner at Goldman Sachs and the Chief U.S. Equity Strategist. He is responsible for the firm's U.S. stock market forecasts and is frequently cited in major financial media for his market insights." },
+            { name: "Joseph Gabelli", votes: 1122402, image: "https://i.ibb.co/1J9Pv6T4/20250717023419.png", title: "Portfolio Manager", bio: "Joseph Gabelli is a senior portfolio manager focusing on value investing and long-term equity growth. He has a track record of identifying undervalued companies before they become market leaders." },
+            { name: "Peter Mintzberg", votes: 1084986, image: "https://i.ibb.co/dssTwDqN/20250717023615.png", title: "CEO, Grayscale", bio: "Peter Mintzberg is the CEO of Grayscale Investments, the world's largest digital currency asset manager. He leads the firm's strategy in bridging traditional finance with the crypto ecosystem." },
+            { name: "John Hoffman", votes: 1047668, image: "https://i.ibb.co/M55y5kMW/20250717030534.png", title: "Head of Distribution, Grayscale", bio: "John Hoffman is a pioneer in the ETF industry. At Grayscale, he oversees the global distribution of digital asset investment products to institutional and retail investors." },
+            { name: "Glenn Hutchins", votes: 984267, image: "https://i.ibb.co/20KVXZYw/20250717024940.png", title: "Chairman, North Island", bio: "Glenn Hutchins is a co-founder of Silver Lake, a global leader in technology investing. He is a respected advisor on global economic policy and digital asset regulation." },
+            { name: "Corey Bowen", votes: 948071, image: "https://i.ibb.co/WW9bN636/20250717025316.png", title: "Chief Financial Advisor", bio: "Corey Bowen specializes in strategic wealth management and corporate finance. He provides high-level consulting for some of the world's largest family offices." },
+            { name: "Gokul Laroia", votes: 936611, image: "https://i.ibb.co/JwMX29Yy/20250717025943.png", title: "CEO Asia, Morgan Stanley", bio: "Gokul Laroia is the CEO of Morgan Stanley for the Asia Pacific region. He has extensive experience in capital markets and investment banking across global territories." },
+            { name: "Mike Wilson", votes: 918200, image: "https://i.ibb.co/KphbfCbD/20250717025647.png", title: "Chief Equity Strategist", bio: "Mike Wilson is the Chief Investment Officer and Chief Equity Strategist for Morgan Stanley. He is well-known for his 'tactical' approach to market cycles." }
         ];
 
         let votesData = {};
@@ -267,7 +154,7 @@
                 <div class="analyst-row">
                     <div class="rank-number">No.${i+4}</div>
                     <img src="${a.image}" class="analyst-image" onclick="showProfile('${a.name}')">
-                    <div class="analyst-info">
+                    <div class="analyst-info" onclick="showProfile('${a.name}')">
                         <div class="analyst-name">${a.name}</div>
                         <div class="vote-count">${formatNumber(votesData[a.name])}</div>
                     </div>
@@ -295,7 +182,7 @@
             document.getElementById('profileImageLarge').src = a.image;
             document.getElementById('profileName').textContent = a.name;
             document.getElementById('profileTitle').textContent = a.title;
-            document.getElementById('profileBioContent').textContent = a.bio;
+            document.getElementById('profileBioContent').innerText = a.bio; // 使用 innerText 确保文字显示
             document.getElementById('profileModal').classList.add('show');
         }
 
